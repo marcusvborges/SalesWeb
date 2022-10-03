@@ -5,10 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Models\NovaPasta\**" />
-    <Content Remove="Models\NovaPasta\**" />
-    <EmbeddedResource Remove="Models\NovaPasta\**" />
-    <None Remove="Models\NovaPasta\**" />
+    <Content Remove="wwwroot\lib\bootstrap\dist\css\bootstrap-cosmo.css" />
   </ItemGroup>
 
   <ItemGroup>

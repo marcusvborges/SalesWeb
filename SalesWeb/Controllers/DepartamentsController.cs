@@ -54,7 +54,7 @@ namespace SalesWeb.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name")] Departaments departaments)
+        public async Task<IActionResult> Create([Bind("Id,Name")] Departament departaments)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +86,7 @@ namespace SalesWeb.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name")] Departaments departaments)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name")] Departament departaments)
         {
             if (id != departaments.Id)
             {

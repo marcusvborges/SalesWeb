@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SalesWeb.Data;
 
 namespace SalesWeb.Migrations
 {
     [DbContext(typeof(SalesWebContext))]
-    partial class SalesWebContextModelSnapshot : ModelSnapshot
+    [Migration("20221003202041_OtherEntities")]
+    partial class OtherEntities
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -31,7 +33,7 @@ namespace SalesWeb.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Departaments");
+                    b.ToTable("Departament");
                 });
 
             modelBuilder.Entity("SalesWeb.Models.SalesRecord", b =>

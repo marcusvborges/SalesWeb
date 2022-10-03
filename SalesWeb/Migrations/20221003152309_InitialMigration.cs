@@ -7,7 +7,7 @@ namespace SalesWeb.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Departaments",
+                name: "Departament",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -23,7 +23,7 @@ namespace SalesWeb.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Departaments");
+                name: "Departament");
         }
     }
 }
