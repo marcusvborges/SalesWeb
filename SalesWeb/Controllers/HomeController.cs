@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using SalesWeb.Models;
+using SalesWeb.Models.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -18,10 +19,19 @@ namespace SalesWeb.Controllers
             _logger = logger;
         }
 
+        public IActionResult About()
+        {
+            ViewData["Message"] = "Salles Web MVC App";
+            ViewData["email"] = "marcusvbs2018@gmail.com";
+
+            return View();
+        }
+
         public IActionResult Index()
         {
             return View();
         }
+
 
         public IActionResult Privacy()
         {
