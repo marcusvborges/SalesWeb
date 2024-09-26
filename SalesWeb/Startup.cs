@@ -1,15 +1,13 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using SalesWeb.Data;
+using System.Security.Cryptography;
+using Microsoft.CodeAnalysis.Scripting.Hosting;
+using System;
 
 namespace SalesWeb
 {
@@ -27,16 +25,21 @@ namespace SalesWeb
         {
             services.AddControllersWithViews();
 
+            string connection = Configuration["ConnectionStrings:SalesWebContext"];
             services.AddDbContext<SalesWebContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("SalesWebContext")));
+                    options.UseMySql(connection, ServerVersion.AutoDetect(connection))
+            );
+
+            services.AddScoped<SeedingService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, SeedingService seedingService)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                seedingService.Seed();
             }
             else
             {

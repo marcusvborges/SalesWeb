@@ -14,8 +14,8 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.17" />
-    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="6.0.3" />
-    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql.Design" Version="1.1.2" />
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySQL" Version="6.0.3" />
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySQL.Design" Version="1.1.2" />
   </ItemGroup>
 
 </Project>
