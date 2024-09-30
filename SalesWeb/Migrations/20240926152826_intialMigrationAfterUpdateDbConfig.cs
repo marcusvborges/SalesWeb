@@ -14,7 +14,7 @@ namespace SalesWeb.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
-                name: "Departaments",
+                name: "Departments",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -24,7 +24,7 @@ namespace SalesWeb.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Departaments", x => x.Id);
+                    table.PrimaryKey("PK_Departments", x => x.Id);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -40,15 +40,15 @@ namespace SalesWeb.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     BirthDate = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     BaseSalary = table.Column<double>(type: "double", nullable: false),
-                    DepartamentId = table.Column<int>(type: "int", nullable: true)
+                    DepartmentId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Seller", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Seller_Departaments_DepartamentId",
-                        column: x => x.DepartamentId,
-                        principalTable: "Departaments",
+                        name: "FK_Seller_Departments_DepartmentId",
+                        column: x => x.DepartmentId,
+                        principalTable: "Departments",
                         principalColumn: "Id");
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
@@ -81,9 +81,9 @@ namespace SalesWeb.Migrations
                 column: "SellerId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Seller_DepartamentId",
+                name: "IX_Seller_DepartmentId",
                 table: "Seller",
-                column: "DepartamentId");
+                column: "DepartmentId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -95,7 +95,7 @@ namespace SalesWeb.Migrations
                 name: "Seller");
 
             migrationBuilder.DropTable(
-                name: "Departaments");
+                name: "Departments");
         }
     }
 }

@@ -14,7 +14,7 @@ namespace SalesWeb.Data
         {
         }
 
-        public DbSet<Departament> Departaments { get; set; }
+        public DbSet<Department> Departments { get; set; }
         public DbSet<Seller> Seller { get; set; }
         public DbSet<SalesRecord> SalesRecord { get; set; }
 

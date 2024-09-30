@@ -19,7 +19,7 @@ namespace SalesWeb.Migrations
                 .HasAnnotation("ProductVersion", "6.0.33")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
-            modelBuilder.Entity("SalesWeb.Models.Departament", b =>
+            modelBuilder.Entity("SalesWeb.Models.Department", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -30,7 +30,7 @@ namespace SalesWeb.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Departaments");
+                    b.ToTable("Departments");
                 });
 
             modelBuilder.Entity("SalesWeb.Models.SalesRecord", b =>
@@ -70,7 +70,7 @@ namespace SalesWeb.Migrations
                     b.Property<DateTime>("BirthDate")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<int?>("DepartamentId")
+                    b.Property<int>("DepartmentId")
                         .HasColumnType("int");
 
                     b.Property<string>("Email")
@@ -81,7 +81,7 @@ namespace SalesWeb.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("DepartamentId");
+                    b.HasIndex("DepartmentId");
 
                     b.ToTable("Seller");
                 });
@@ -97,14 +97,16 @@ namespace SalesWeb.Migrations
 
             modelBuilder.Entity("SalesWeb.Models.Seller", b =>
                 {
-                    b.HasOne("SalesWeb.Models.Departament", "Departament")
+                    b.HasOne("SalesWeb.Models.Department", "Department")
                         .WithMany("Sellers")
-                        .HasForeignKey("DepartamentId");
+                        .HasForeignKey("DepartmentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.Navigation("Departament");
+                    b.Navigation("Department");
                 });
 
-            modelBuilder.Entity("SalesWeb.Models.Departament", b =>
+            modelBuilder.Entity("SalesWeb.Models.Department", b =>
                 {
                     b.Navigation("Sellers");
                 });

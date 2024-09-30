@@ -11,8 +11,8 @@ using SalesWeb.Data;
 namespace SalesWeb.Migrations
 {
     [DbContext(typeof(SalesWebContext))]
-    [Migration("20240926152826_intialMigrationAfterUpdateDbConfig")]
-    partial class intialMigrationAfterUpdateDbConfig
+    [Migration("20240930190845_DepartmentForeignkey")]
+    partial class DepartmentForeignkey
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -72,7 +72,7 @@ namespace SalesWeb.Migrations
                     b.Property<DateTime>("BirthDate")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<int?>("DepartmentId")
+                    b.Property<int>("DepartmentId")
                         .HasColumnType("int");
 
                     b.Property<string>("Email")
@@ -101,7 +101,9 @@ namespace SalesWeb.Migrations
                 {
                     b.HasOne("SalesWeb.Models.Department", "Department")
                         .WithMany("Sellers")
-                        .HasForeignKey("DepartmentId");
+                        .HasForeignKey("DepartmentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Department");
                 });
