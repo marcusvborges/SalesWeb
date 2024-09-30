@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SalesWeb.Models;
+using SalesWeb.Models.ViewModels;
 using SalesWeb.Services;
 
 namespace SalesWeb.Controllers
@@ -9,9 +10,12 @@ namespace SalesWeb.Controllers
 	{
 		private readonly SellersService _sellersService;
 
-		public SellersController(SellersService sellersService)
+		private readonly DepartmentService _departmentService;
+
+		public SellersController(SellersService sellersService, DepartmentService departmentService)
 		{
 			_sellersService = sellersService;
+			_departmentService = departmentService;
 		}
 
 		public IActionResult Index()
@@ -22,7 +26,9 @@ namespace SalesWeb.Controllers
 		
 		public IActionResult Create()
 		{
-			return View();
+			var departments = _departmentService.FindAll();
+			var VieWModel = new SellerFormViewModel { Departments = departments };
+			return View(VieWModel);
 		}
 
 		[HttpPost]
