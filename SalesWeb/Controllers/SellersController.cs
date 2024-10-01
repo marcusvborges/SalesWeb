@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using SalesWeb.Models;
 using SalesWeb.Models.ViewModels;
 using SalesWeb.Services;
+using System.Threading.Tasks;
 
 namespace SalesWeb.Controllers
 {
@@ -38,5 +39,21 @@ namespace SalesWeb.Controllers
 			_sellersService.Insert(seller);	
 			return RedirectToAction(nameof(Index));
 		}
+
+		public async Task<IActionResult> Delete(int? id)
+		{
+			if(id == null)
+			{
+				return NotFound();
+			}
+
+			var obj = await _sellersService.FindByIdAsync(id.Value);
+            if (obj == null)
+            {
+                return NotFound();
+            }
+
+            return View(obj);
+        }
 	}
 }
