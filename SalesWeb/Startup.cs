@@ -32,7 +32,7 @@ namespace SalesWeb
             );
 
             services.AddScoped<SeedingService>();
-            services.AddScoped<SellersService>();
+            services.AddScoped<SellerService>();
             services.AddScoped<DepartmentService>();
         }
 
