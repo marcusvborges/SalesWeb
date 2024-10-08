@@ -143,7 +143,7 @@ namespace SalesWeb.Controllers
         {
             var viewModel = new ErrorViewModel
             {
-                //Message = message,
+                Message = message,
                 RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier
             };
             return View(viewModel);
