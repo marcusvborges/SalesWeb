@@ -47,7 +47,7 @@ namespace SalesWeb.Migrations
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<int>("Satatus")
+                    b.Property<int>("Status")
                         .HasColumnType("int");
 
                     b.Property<int?>("SellerId")
